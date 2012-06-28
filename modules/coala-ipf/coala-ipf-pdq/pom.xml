@@ -7,9 +7,7 @@
 		<version>0.1-SNAPSHOT</version>
 		<relativePath>../../../poms</relativePath>
 	</parent>
-	<groupId>org.openehealth.coala</groupId>
 	<artifactId>coala-ipf-pdq</artifactId>
-	<version>0.1-SNAPSHOT</version>
 	<name>Coala-IPF-PDQ</name>
 	<description>Coala module binding for PDQ communication</description>
 	
@@ -31,11 +29,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.openehealth.ipf.platform-camel</groupId>
-			<artifactId>platform-camel-ihe-pixpdq</artifactId>
-		</dependency> -->
-		<!-- USE with Camel -->
 		<dependency>
 			<groupId>org.openehealth.ipf.platform-camel</groupId>
 			<artifactId>ipf-platform-camel-hl7</artifactId>

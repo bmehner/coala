@@ -12,6 +12,7 @@
 	</organization>
 	<modules>
 		<module>poms</module>
+		<module>mocks/coala-mocks</module>
 		<module>modules</module>
 		<module>assemblies/coala</module>
 	</modules>

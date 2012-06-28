@@ -21,17 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Date;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import org.openehealth.coala.builder.CDABuilder;
-import org.openehealth.coala.domain.FindPatientQuery;
-import org.openehealth.coala.domain.FindPatientResult;
-import org.openehealth.coala.domain.Gender;
-import org.openehealth.coala.domain.Patient;
-import org.openehealth.coala.domain.PatientAddress;
-import org.openehealth.coala.domain.PatientSortParameter;
 
 /**
  * Tests the integration of the coala domain module.
