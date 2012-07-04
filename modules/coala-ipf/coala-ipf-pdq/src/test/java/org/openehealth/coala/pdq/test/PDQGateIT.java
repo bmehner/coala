@@ -32,7 +32,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/coala-pdq-test-context.xml" })
-public class PDQGateTest implements PDQTestConstants {
+public class PDQGateIT implements PDQTestConstants {
 
 	@Autowired
 	private PDQGate pdqGate;

@@ -36,10 +36,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/META-INF/coala-pdq-test-context.xml" })
-public class PDQMessageTest implements PDQTestConstants{
+public class PDQMessageIT implements PDQTestConstants{
 
 	private static final Logger LOG = org.slf4j.LoggerFactory
-			.getLogger(PDQMessageTest.class);
+			.getLogger(PDQMessageIT.class);
 
 	@Autowired
 	private PDQTransactor pdqTransactor;
