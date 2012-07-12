@@ -75,6 +75,22 @@
 			<artifactId>ipf-platform-camel-ihe-xds</artifactId>
 		</dependency>
 		<dependency>
+            <groupId>org.openehealth.ipf.platform-camel</groupId>
+            <artifactId>ipf-platform-camel-ihe-ws</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openehealth.ipf.commons</groupId>
+            <artifactId>ipf-commons-ihe-ws</artifactId>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.openehealth.ipf.platform-camel</groupId>
+            <artifactId>ipf-platform-camel-ihe-ws</artifactId>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+		<dependency>
 			<groupId>org.openehealth.ipf.modules</groupId>
 			<artifactId>ipf-modules-cda</artifactId>
 			<type>pom</type>
