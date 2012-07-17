@@ -35,7 +35,7 @@ import org.springframework.context.ApplicationContext;
 public class XdsRouteBuilderTest {
 
 	private static final int PORT = 8766;
-	private static final String URI = "xds-iti41://localhost:" + PORT + "/mockrepo?audit=false";
+	private static final String URI = "xds-iti41://localhost:" + PORT + "/provideAndRegister?audit=false";
 
 	static ApplicationContext appContext;
 	static ProducerTemplate template;

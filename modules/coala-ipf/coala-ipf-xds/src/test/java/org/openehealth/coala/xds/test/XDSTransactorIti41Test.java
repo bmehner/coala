@@ -68,6 +68,10 @@ import org.slf4j.Logger;
  */
 @Ignore
 public class XDSTransactorIti41Test extends XDSBaseTest {
+	private static final boolean DO_NOT_REPLACE_OLD = false;
+
+	private static final boolean REPLACE_OLD = true;
+
 	private static final Logger LOG = org.slf4j.LoggerFactory
 			.getLogger(XDSTransactorIti43Test.class);
 
@@ -120,6 +124,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 		String buffer = "";
 		String xml = "";
 		InputStream testConsentStream = null;
+		// FIXME Maybe better to use a FileDataSource here instead?
 		try {
 			// Try to read out the stream
 			// See if source can be established and has bytes
@@ -163,7 +168,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 			Document doc = new Document(docEntry, dataHandler);
 
 			String resp = xdsTransactor
-					.provideAndRegisterNewConsent(doc, false);
+					.provideAndRegisterNewConsent(doc, DO_NOT_REPLACE_OLD);
 			// #####################################
 			// Check whether the document could be
 			// registered
@@ -187,7 +192,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 		DocumentEntry docEntry = createDocumentEntry(null, createPatient,
 				policy);
 		Document doc = new Document(docEntry, dataHandler);
-		String resp = xdsTransactor.provideAndRegisterNewConsent(doc, false);
+		String resp = xdsTransactor.provideAndRegisterNewConsent(doc, DO_NOT_REPLACE_OLD);
 		assertNotNull(resp);
 	}
 
@@ -202,7 +207,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 		// #####################################
 		DocumentEntry docEntry = createDocumentEntry(author, null, policy);
 		Document doc = new Document(docEntry, dataHandler);
-		xdsTransactor.provideAndRegisterNewConsent(doc, false);
+		xdsTransactor.provideAndRegisterNewConsent(doc, DO_NOT_REPLACE_OLD);
 	}
 
 	/**
@@ -216,7 +221,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 		DocumentEntry docEntry = createDocumentEntry(author, createPatient,
 				null);
 		Document doc = new Document(docEntry, dataHandler);
-		xdsTransactor.provideAndRegisterNewConsent(doc, false);
+		xdsTransactor.provideAndRegisterNewConsent(doc, DO_NOT_REPLACE_OLD);
 	}
 
 	/**
@@ -246,7 +251,7 @@ public class XDSTransactorIti41Test extends XDSBaseTest {
 				policy);
 		Document doc = new Document(docEntry, dataHandler);
 		String consentUniqueID = xdsTransactor.provideAndRegisterNewConsent(
-				doc, true);
+				doc, REPLACE_OLD);
 
 		List<DocumentEntry> consentListAfter = xdsTransactor
 				.getConsentDocumentList(replacePatient.getId(),

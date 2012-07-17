@@ -1,28 +1,47 @@
 package org.openehealth.coala.mocks;
 
-import org.apache.camel.spring.Main;
+import java.io.IOException;
+
+import javax.servlet.Servlet;
+
+import org.apache.cxf.transport.servlet.CXFServlet;
 import org.openehealth.ipf.commons.ihe.ws.server.JettyServer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 public class MainMock {
 	
-	private Main main;
+	private int port;
+	private JettyServer servletServer;
 	
-	public static void main(String[] args) throws Exception {
-		MainMock mainMock = new MainMock();
-		mainMock.boot();
+	public MainMock(int port) {
+		this.port = port;
 	}
 	
 	public void boot() throws Exception {
-		System.out.println("Starting mocks...\nPress ctrl-c to exit.");
-		ApplicationContext context = JettyStarter.startJettyServer(8766, "/META-INF/spring/coala-mocks-context.xml");
-		main = new Main();
-		main.setApplicationContextUri("classpath:/META-INF/spring/coala-mocks-context.xml");
-		main.enableHangupSupport();
-		main.run();
-//		new ClassPathXmlApplicationContext("classpath:/META-INF/spring/coala-mocks-context.xml");
-//		Thread.currentThread().join();
+		ClassPathResource contextResource = new ClassPathResource("META-INF/spring/coala-mocks-context.xml");
+		Servlet servlet = new CXFServlet();
+        //log.info("Publishing services on port: ${port}")
+        
+        servletServer = new JettyServer();
+        try {
+			servletServer.setContextResource(contextResource.getURI().toString());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+        servletServer.setPort(port);
+        servletServer.setContextPath("");
+        servletServer.setServletPath("/*");
+        servletServer.setServlet(servlet);
+        servletServer.setSecure(false);
+        
+        System.out.println("Starting Jetty servers with mocks deployed on port " + port + " ...");
+        System.out.println("Press ctrl-c to stop.");
+        servletServer.start();
 	}
-
+	
+	public static void main(String[] args) throws Exception {		
+		MainMock mainMock = new MainMock(8766);
+		mainMock.boot();
+	}
+	
 }
