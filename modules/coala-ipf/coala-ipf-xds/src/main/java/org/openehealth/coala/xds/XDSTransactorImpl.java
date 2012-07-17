@@ -158,16 +158,13 @@ public class XDSTransactorImpl implements XDSTransactor {
 	public List<DocumentEntry> getConsentDocumentList(String pid,
 			List<AvailabilityStatus> availabilityStati)
 			throws XDSRequestFailedException {
-		// check parameters
+		
 		checkParametersGetConsentList(pid, availabilityStati);
-		// prepare request
 		Exchange requestExchange = prepareConsentListRequest(pid,
 				availabilityStati);
-		// send request
 		Exchange responseExchange = producerTemplate.send(xdsIti18endpoint,
 				requestExchange);
 
-		// process response
 		if (responseExchange != null && responseExchange.getOut() != null
 				&& responseExchange.getOut().getBody() != null) {
 			QueryResponse resp = responseExchange.getOut().getBody(

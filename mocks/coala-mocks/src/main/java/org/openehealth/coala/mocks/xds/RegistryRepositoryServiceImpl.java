@@ -55,6 +55,7 @@ public class RegistryRepositoryServiceImpl implements RegistryRepositoryService 
 		List<DocumentEntry> documentEntries = registry.get(patientId);
 		QueryResponse queryResponse = new QueryResponse();
 		queryResponse.setDocumentEntries(documentEntries);
+		queryResponse.setStatus(Status.SUCCESS);
 		return queryResponse;
 	}
 	

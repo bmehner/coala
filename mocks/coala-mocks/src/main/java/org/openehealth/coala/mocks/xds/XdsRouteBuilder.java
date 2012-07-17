@@ -22,10 +22,34 @@ public class XdsRouteBuilder extends SpringRouteBuilder {
 	
 	@Override
 	public void configure() throws Exception {
-		
+
 		from("xds-iti18:registryStoredQuery?audit=false")
+			.process(new Processor(){
+
+				@Override
+				public void process(Exchange exchange) throws Exception {
+					System.out.println(exchange);
+				}
+				
+			})
 			.process(XdsCamelValidators.iti18RequestValidator())
+			.process(new Processor(){
+
+				@Override
+				public void process(Exchange exchange) throws Exception {
+					System.out.println(exchange);
+				}
+				
+			})
 			.beanRef("registryRepositoryService", "registryStoredQuery")
+			.process(new Processor(){
+
+				@Override
+				public void process(Exchange exchange) throws Exception {
+					System.out.println(exchange);
+				}
+				
+			})
 //			.process(new Processor() {
 //				@Override
 //				public void process(Exchange exchange) throws Exception {
@@ -39,6 +63,14 @@ public class XdsRouteBuilder extends SpringRouteBuilder {
 		
 		from("xds-iti41:provideAndRegister?audit=false")
 			.process(XdsCamelValidators.iti41RequestValidator())
+			.process(new Processor(){
+
+				@Override
+				public void process(Exchange exchange) throws Exception {
+					System.out.println(exchange);
+				}
+				
+			})
 			.beanRef("registryRepositoryService", "provideAndRegister")
 			.process(new Processor() {
 				@Override
